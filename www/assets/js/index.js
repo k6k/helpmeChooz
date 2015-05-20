@@ -113,7 +113,36 @@ var app = {
                 destinationType: Camera.DestinationType.DATA_URL,
                 sourceType: Camera.PictureSourceType.PHOTOLIBRARY
             }
-                );
+        );
+    },
+    storeFirstPict : function(id){
+        var pict = this.picturePicker(id);
+        console.log($('#'+id).val());
+    },
+    picturePicker :function(id){
+        navigator.camera.getPicture(
+                  function(img){
+                   $('#'+id).val(img);
+                    
+                  }, function(e){
+                    console.log('error '+e);
+                  }, 
+            { 
+                quality: 50,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+            }
+        );
+    },
+    storeSecondPict : function(id){
+        var pict = this.picturePicker(id);
+    },
+    showPict        : function(){
+        var pict_1 = $('#pict_1_address').val();
+        $('#pict_1').attr('src','data:image/jpg;base64,'+pict_1);
+
+        var pict_2 = $('#pict_2_address').val();
+        $('#pict_2').attr('src','data:image/jpg;base64,'+pict_2);
     }
 
 };

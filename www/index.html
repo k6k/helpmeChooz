@@ -56,10 +56,25 @@
         </ul>
         <input type="hidden" id="listcontact">
       </div>
+
+      <div class="pict_1">
+          <img src="" id="pict_1">
+          <input type='hidden' id='pict_1_address'>
+          <button onclick="app.storeFirstPict('pict_1_address')">1st</button>
+      </div>
+
+      <div class="pict_2">
+          <img src="" id="pict_2">
+          <input type='hidden' id='pict_2_address'>
+          <button onclick="app.storeSecondPict('pict_2_address')">2nd</button>
+      </div>
+        <button onclick="app.showPict()"></button>
       <div class="bar bar-standard bar-footer-secondary">
           <button class="btn btn-block" onclick="app.pickToShare()">Envoyer</button>
       </div>
-      <nav class="bar bar-tab">
+      
+    </div>
+    <nav class="bar bar-tab">
           <a class="tab-item active" href="#">
             <span class="icon icon-home"></span>
             <span class="tab-label">Home</span>
@@ -81,8 +96,6 @@
             <span class="tab-label">Settings</span>
           </a>
         </nav>
-    </div>
-
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="assets/js/index.js"></script>
         <script type="text/javascript" src="assets/js/jquery.js"></script>
