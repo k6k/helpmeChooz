@@ -1,104 +1,40 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        -->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <script src="assets/js/handlebars.js"></script>
-        <link href="assets/css/ratchet.css" rel="stylesheet">
-       <!--  <link href="assets/css/styles.css" rel="stylesheet">  -->
-        <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/semantic.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+        
+        <title>HelpMeChoose</title>
     </head>
-    <body>
-         <!-- Make sure all your bars are the first things in your <body> -->
-    <header class="bar bar-nav">
-      <h1 class="title">liste des contacts :</h1>
-    </header>
-            
-                <div class="bar bar-standard bar-header-secondary">
-                   <button class="btn btn-block" onclick="app.contactList()">Rechercher</button>
+    <body class="homepage-account">
+   
+      <header>
+        
+        
+                <div class="ui labeled icon button" onclick="app.contactList()">
+                  <i class="left chevron icon"></i>
+                  Back
+                </div> 
+                  <h3 class="titre-img">Liste de contacts</h3>
+                <div class="ui right labeled icon button" onclick="app.sendSms()">
+                  <i class="right send outline icon"></i>
+                  Send
                 </div>
-    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-    <div class="content">
-     
-      <div class="card">
-        <ul class="table-view" id="contactList">
-          
-        </ul>
+      </header>       
+       <div class="donnes"> 
+            <div class="ui divided list" id="contactList">
+            </div>
+       </div> 
+
         <input type="hidden" id="listcontact">
-      </div>
-
-      <div class="pict_1">
-          <img src="" id="pict_1">
-          <input type='hidden' id='pict_1_address'>
-          <button onclick="app.storeFirstPict('pict_1_address')">1st</button>
-      </div>
-
-      <div class="pict_2">
-          <img src="" id="pict_2">
-          <input type='hidden' id='pict_2_address'>
-          <button onclick="app.storeSecondPict('pict_2_address')">2nd</button>
-      </div>
-        <button onclick="app.showPict()"></button>
-      <div class="bar bar-standard bar-footer-secondary">
-          <button class="btn btn-block" onclick="app.pickToShare()">Envoyer</button>
-      </div>
-      
-    </div>
-    <nav class="bar bar-tab">
-          <a class="tab-item active" href="#">
-            <span class="icon icon-home"></span>
-            <span class="tab-label">Home</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-person"></span>
-            <span class="tab-label">Profile</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-star-filled"></span>
-            <span class="tab-label">Favorites</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-search"></span>
-            <span class="tab-label">Search</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-gear"></span>
-            <span class="tab-label">Settings</span>
-          </a>
-        </nav>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="assets/js/index.js"></script>
         <script type="text/javascript" src="assets/js/jquery.js"></script>
-        <script type="text/javascript" src="assets/js/ratchet.js"></script>
+        <script type="text/javascript" src="assets/js/semantic.js"></script>
+       
     </body>
 </html>

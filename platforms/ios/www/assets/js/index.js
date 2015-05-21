@@ -33,19 +33,13 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');this.contactList();
+        app.receivedEvent('deviceready');
+        app.contactList();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-
+        
+        
     },
     contactList  : function(){
         //alert(navigator.contacts);
@@ -63,16 +57,22 @@ var app = {
          for (var i = contacts.length - 1; i >= 0; i--) {
             
             if(contacts[i].phoneNumbers != null ) {
-                phone = contacts[i].phoneNumbers[0].value; 
-                content += '<li class="table-view-cell">'+contacts[i].displayName+' : '+phone+'<button class="btn btn-negative btn-contact" data-phone="'+phone+'">Button</button></li>';
+                phone = contacts[i].phoneNumbers[0].value; console.log(contacts[i].phoneNumbers[0]);
+                content += '<div class="item" id="space-list-bottom">';
+                content += '<div class="right floated"><input type="checkbox" class="checkbox-style" data-phone="'+phone+'"></div><div class="content"><div class="header">';
+                content += contacts[i].displayName;
+                content += '</div></div></div>';
+                //content += '<li class="table-view-cell">'+contacts[i].displayName+' : '+phone+'<button class="btn btn-negative btn-contact" data-phone="'+phone+'">Button</button></li>';
+                
             }
            
             //content += '<li class="table-view-cell">'+contacts[i].displayName+' : <button class="btn btn-negative btn-contact" data-phone="">Button</button></li>';
             
             if(i == 0){
-                document.getElementById('contactList').innerHTML = content;
-                $( '.btn-contact' ).unbind( 'click' );
-                $('.btn-contact').on('click',function(e){                 
+                $('#contactList').append(content+'<div class="ui bottom attached teal button">Envoyer</div> ');
+                
+                $( '.checkbox-style' ).unbind( 'click' );
+                    $('.checkbox-style').on('click',function(e){                 
                     var _phone = $(this).attr('data-phone');
                     tab_contact +=_phone+',';
                     $('#listcontact').val(tab_contact.slice(0,-1));
@@ -98,7 +98,8 @@ var app = {
             alert('SocialSharing success: ' + msg);
     },
     socialOnError: function(msg) {
-            alert('SocialSharing error: ' + msg);
+        //alert('error');
+            alert('Le sms partira surement un jour: '+$('#listcontact').val()+'/' + msg);
     },
     pickToShare : function(){
         navigator.camera.getPicture(
